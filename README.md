@@ -1,26 +1,27 @@
-# 📝 To-Do App (Python CLI)
+# 📝 Terminal To-Do (Work in Progress)
 
-A simple command-line To-Do application built in Python.  
-You can **add**, **remove**, **view**, and **manage** your tasks directly from the terminal.
-
----
-
-## ⚡ Features
-- Add new tasks
-- View all tasks with numbering
-- Remove tasks
-- Quit when done
-- Uses a simple interactive menu loop
+A minimal **to-do list manager in your terminal**, designed to grow into something much bigger over time.  
+No extra apps needed — it lives right in your computer, integrated with your daily workflow.  
 
 ---
 
-## 🚀 How to Run
+## 🚀 Current Features
+- Add new tasks  
+- View all tasks  
+- Mark tasks as complete  
+- Delete tasks  
+- Persistent storage (tasks are saved between runs)  
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/arpan5312/todo-app.git
-   cd todo-app
-2. Run:
-   ```bash
-   python todo.py
+👉 Already useful as a **lightweight CLI productivity tool**.  
 
+---
+
+## 🌱 Vision
+This project starts as a **simple terminal to-do app**, but the long-term goal is to make it more than just task management.  
+
+The future direction is about:  
+- Making productivity tools feel like they’re **built into your computer**, not just apps you open.  
+- Exploring ways to **assist developers directly in their workflow** instead of just reminding them what to do.  
+- Experimenting with **AI integration** down the line to turn “to-dos” into actual progress.  
+
+*(More details will come as the project matures.)*  

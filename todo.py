@@ -28,7 +28,7 @@ def quit():
     print("Terminated.")
     exit
 while True:
-    ui = input("Choose an action: (add/rem/vie/qui)")
+    ui = input("Choose an action: (add/rem/vie/qui): ")
     if ui == 'add':
         addtask()
     elif ui == 'vie':

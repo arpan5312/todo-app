@@ -47,6 +47,6 @@ while True:
     elif ui == 'quit':
         quit_app()
     elif ui == 'log':
-        check()
+        log()
     else:
         print("Invalid input. Try again.")

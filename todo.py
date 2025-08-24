@@ -27,7 +27,7 @@ def quit_app():
     print("👋 Exiting To-Do App. Goodbye!")
     exit()
 
-def log():
+def check():
     completed_task = input("Enter the task to be checked off: ")
     if completed_task in tasks:
         tasks.remove(completed_task)
@@ -73,9 +73,9 @@ def prog():
     print(f"   📈 [{bar}] {progress:.1f}%")
 
 
-
+#FLOW
 while True:
-    ui = input("\nChoose action: add / rem / view / quit / log / prog: ").strip().lower()
+    ui = input("\nChoose action: add / rem / view / quit / check / prog: ").strip().lower()
     if ui == 'add':
         add_task()
     elif ui == 'rem':
@@ -84,9 +84,10 @@ while True:
         view_tasks()
     elif ui == 'quit':
         quit_app()
-    elif ui == 'log':
-        log()
+    elif ui == 'check':
+        check()
     elif ui == 'prog':
         prog()
     else:
         print("Invalid input. Try again.")
+        

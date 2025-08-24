@@ -1,4 +1,5 @@
 tasks = []
+tasks_done = []
 
 def add_task():
     new_task = input("Enter new task: ")
@@ -26,8 +27,17 @@ def quit_app():
     print("👋 Exiting To-Do App. Goodbye!")
     exit()
 
+def log():
+    completed_task = input("Enter the task to be checked off: ")
+    if completed_task in tasks:
+        tasks.remove(completed_task)
+        tasks_done.append(completed_task)
+        print(f"{completed_task} checked off")
+    else:
+        print("Task not found")
+
 while True:
-    ui = input("\nChoose action: add / rem / view / quit: ").strip().lower()
+    ui = input("\nChoose action: add / rem / view / quit / log: ").strip().lower()
     if ui == 'add':
         add_task()
     elif ui == 'rem':
@@ -36,5 +46,7 @@ while True:
         view_tasks()
     elif ui == 'quit':
         quit_app()
+    elif ui == 'log':
+        check()
     else:
         print("Invalid input. Try again.")

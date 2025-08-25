@@ -13,10 +13,14 @@ def add_task():
 
 def remove_task():
     remove_task = input("Enter the task to remove: ")
-    if remove_task in tasks or tasks_done:
+    if remove_task in tasks:
         tasks.remove(remove_task)
         save_data()
-        print(f"🗑️ {remove_task} removed.")
+        print(f"🗑️ {remove_task} removed from active tasks.")
+    elif remove_task in tasks_done:
+        tasks_done.remove(remove_task)
+        save_data()
+        print(f"🗑️ {remove_task} removed from completed tasks.")
     else:
         print("⚠️ Task not found.")
 

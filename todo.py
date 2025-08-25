@@ -71,7 +71,7 @@ def prog():
     print(f"\nSummary:")
     print(f"   ✅ Completed: {completed}")
     print(f"   ⬜ Remaining: {not_completed}")
-    print(f"   📊 Progress: {progress:.1f}%")
+    print(f"   📊 Progress: {progress:.1f}%") 
 
     # Progress bar
     bar_length = 20
@@ -83,15 +83,22 @@ def prog():
 def save_data():
     with open("tasks.json", "w") as f:
         json.dump({"tasks": tasks, "tasks_done": tasks_done}, f)
-
+        
 def load_data():
     global tasks, tasks_done
     try:
         with open("tasks.json", "r") as f:
-            data = json.load(f)
+            content = f.read().strip()
+            if not content:  # file is empty
+                tasks, tasks_done = [], []
+                return
+            data = json.loads(content)
             tasks = data.get("tasks", [])
             tasks_done = data.get("tasks_done", [])
     except FileNotFoundError:
+        tasks, tasks_done = [], []
+    except json.JSONDecodeError:
+        print("⚠️ Corrupted tasks.json detected. Starting fresh.")
         tasks, tasks_done = [], []
 
 # Flow

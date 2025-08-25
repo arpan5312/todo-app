@@ -1,15 +1,21 @@
+import json
+
+# Attributes:
 tasks = []
 tasks_done = []
 
+# Functions:
 def add_task():
     new_task = input("Enter new task: ")
     tasks.append(new_task)
+    save_data()
     print(f"✅ {new_task} added.")
 
 def remove_task():
     remove_task = input("Enter the task to remove: ")
     if remove_task in tasks:
         tasks.remove(remove_task)
+        save_data()
         print(f"🗑️ {remove_task} removed.")
     else:
         print("⚠️ Task not found.")
@@ -25,6 +31,7 @@ def view_tasks():
 
 def quit_app():
     print("👋 Exiting To-Do App. Goodbye!")
+    save_data()
     exit()
 
 def check():
@@ -32,9 +39,10 @@ def check():
     if completed_task in tasks:
         tasks.remove(completed_task)
         tasks_done.append(completed_task)
+        save_data()
         print(f"{completed_task} checked off")
     else:
-        print("Task not found")
+        print("⚠️ Task not found")
 
 def prog():
     print("\n✅ Tasks done:")
@@ -65,15 +73,32 @@ def prog():
     print(f"   ⬜ Remaining: {not_completed}")
     print(f"   📊 Progress: {progress:.1f}%")
 
-        # Progress bar
-    bar_length = 20  
+    # Progress bar
+    bar_length = 20
     filled_length = int(bar_length * progress / 100)
     bar = "█" * filled_length + "-" * (bar_length - filled_length)
 
     print(f"   📈 [{bar}] {progress:.1f}%")
 
+def save_data():
+    with open("tasks.json", "w") as f:
+        json.dump({"tasks": tasks, "tasks_done": tasks_done}, f)
 
-#FLOW
+def load_data():
+    global tasks, tasks_done
+    try:
+        with open("tasks.json", "r") as f:
+            data = json.load(f)
+            tasks = data.get("tasks", [])
+            tasks_done = data.get("tasks_done", [])
+    except FileNotFoundError:
+        tasks, tasks_done = [], []
+
+# Flow
+load_data()  
+
+
+
 while True:
     ui = input("\nChoose action: add / rem / view / quit / check / prog: ").strip().lower()
     if ui == 'add':
@@ -90,4 +115,3 @@ while True:
         prog()
     else:
         print("Invalid input. Try again.")
-        

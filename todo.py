@@ -13,7 +13,7 @@ def add_task():
 
 def remove_task():
     remove_task = input("Enter the task to remove: ")
-    if remove_task in tasks:
+    if remove_task in tasks or tasks_done:
         tasks.remove(remove_task)
         save_data()
         print(f"🗑️ {remove_task} removed.")
